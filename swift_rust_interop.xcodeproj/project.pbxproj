@@ -28,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		802B7E662D3C03F1002E0A4C /* lib.rs */ = {isa = PBXFileReference; lastKnownFileType = text; path = lib.rs; sourceTree = "<group>"; };
+		802B7E682D3C065D002E0A4C /* cargo.toml */ = {isa = PBXFileReference; lastKnownFileType = text; name = cargo.toml; path = myCrate/cargo.toml; sourceTree = SOURCE_ROOT; };
 		803F38322D3BF5A200BC10CA /* swift_rust_interop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swift_rust_interop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		803F38442D3BF64F00BC10CA /* my_crate_framework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = my_crate_framework.xcframework; path = frameworks/my_crate_framework.xcframework; sourceTree = "<group>"; };
 		803F384A2D3BF6ED00BC10CA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		802B7E652D3C03A0002E0A4C /* Rust */ = {
 			isa = PBXGroup;
 			children = (
+				802B7E682D3C065D002E0A4C /* cargo.toml */,
 				802B7E672D3C03F1002E0A4C /* src */,
 			);
 			path = Rust;

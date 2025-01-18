@@ -323,6 +323,19 @@ fileprivate struct FfiConverterUInt32: FfiConverterPrimitive {
     }
 }
 
+fileprivate struct FfiConverterDouble: FfiConverterPrimitive {
+    typealias FfiType = Double
+    typealias SwiftType = Double
+
+    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> Double {
+        return try lift(readDouble(&buf))
+    }
+
+    public static func write(_ value: Double, into buf: inout [UInt8]) {
+        writeDouble(&buf, lower(value))
+    }
+}
+
 fileprivate struct FfiConverterString: FfiConverter {
     typealias SwiftType = String
     typealias FfiType = RustBuffer
@@ -485,6 +498,15 @@ public func add(a: UInt32, b: UInt32)  -> UInt32 {
     )
 }
 
+public func fibonacci(n: Double)  -> Double {
+    return try!  FfiConverterDouble.lift(
+        try! rustCall() {
+    uniffi_my_crate_fn_func_fibonacci(
+        FfiConverterDouble.lower(n),$0)
+}
+    )
+}
+
 private enum InitializationResult {
     case ok
     case contractVersionMismatch
@@ -501,6 +523,9 @@ private var initializationResult: InitializationResult {
         return InitializationResult.contractVersionMismatch
     }
     if (uniffi_my_crate_checksum_func_add() != 12819) {
+        return InitializationResult.apiChecksumMismatch
+    }
+    if (uniffi_my_crate_checksum_func_fibonacci() != 42061) {
         return InitializationResult.apiChecksumMismatch
     }
 

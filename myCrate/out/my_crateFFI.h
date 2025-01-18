@@ -65,6 +65,8 @@ typedef void (*UniFfiRustFutureContinuation)(void * _Nonnull, int8_t);
 // Scaffolding functions
 uint32_t uniffi_my_crate_fn_func_add(uint32_t a, uint32_t b, RustCallStatus *_Nonnull out_status
 );
+double uniffi_my_crate_fn_func_fibonacci(double n, RustCallStatus *_Nonnull out_status
+);
 RustBuffer ffi_my_crate_rustbuffer_alloc(int32_t size, RustCallStatus *_Nonnull out_status
 );
 RustBuffer ffi_my_crate_rustbuffer_from_bytes(ForeignBytes bytes, RustCallStatus *_Nonnull out_status
@@ -180,6 +182,9 @@ void ffi_my_crate_rust_future_free_void(void* _Nonnull handle
 void ffi_my_crate_rust_future_complete_void(void* _Nonnull handle, RustCallStatus *_Nonnull out_status
 );
 uint16_t uniffi_my_crate_checksum_func_add(void
+    
+);
+uint16_t uniffi_my_crate_checksum_func_fibonacci(void
     
 );
 uint32_t ffi_my_crate_uniffi_contract_version(void
