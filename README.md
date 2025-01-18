@@ -4,9 +4,13 @@
 
 Ensure that rust is installed, and install the targets for your platform(s)
 * Install Rust with https://rustup.rs/#
-* Install mac target: `rustup target add aarch64-apple-ios`
-* Install mac target: `rustup target add aarch64-apple-darwin`
+* Install target: `rustup target add aarch64-apple-ios`
+* Install target: `rustup target add aarch64-apple-darwin`
 * Install ios sim target: `rustup target add aarch64-apple-ios-sim`
+
+If you are unsure what targets you need, you can view a list of possible installable targets by running `rustup target list`
+
+If the build script isn't woring on xcodebuild, you may need to link your cargo install `ln -s $(which cargo) /usr/local/bin/cargo`
 
 ## Project Setup
 

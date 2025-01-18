@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Steps to run
 # Install Rust with https://rustup.rs/#
 # Install mac target: `rustup target add aarch64-apple-ios`
@@ -46,3 +48,10 @@ xcodebuild -create-xcframework \
 
 # Clear header dir
 rm -rf "${NEW_HEADER_DIR}"
+
+# Copy Swift File to Project
+pwd
+ls
+cp "out/${NAME}.swift" "../swift_rust_interop/${NAME}.swift"
+cd ../swift_rust_interop
+ls
