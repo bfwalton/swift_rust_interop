@@ -1,0 +1,10 @@
+/Users/brandonwalton/Documents/Developer/Testing/swift_rust_interop/myCrate/target/aarch64-apple-ios-sim/release/deps/libaskama-df042c23f9b31a20.rmeta: /Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/lib.rs /Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/error.rs /Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/filters/mod.rs /Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/helpers.rs
+
+/Users/brandonwalton/Documents/Developer/Testing/swift_rust_interop/myCrate/target/aarch64-apple-ios-sim/release/deps/libaskama-df042c23f9b31a20.rlib: /Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/lib.rs /Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/error.rs /Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/filters/mod.rs /Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/helpers.rs
+
+/Users/brandonwalton/Documents/Developer/Testing/swift_rust_interop/myCrate/target/aarch64-apple-ios-sim/release/deps/askama-df042c23f9b31a20.d: /Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/lib.rs /Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/error.rs /Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/filters/mod.rs /Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/helpers.rs
+
+/Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/lib.rs:
+/Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/error.rs:
+/Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/filters/mod.rs:
+/Users/brandonwalton/.cargo/registry/src/index.crates.io-6f17d22bba15001f/askama-0.12.1/src/helpers.rs:

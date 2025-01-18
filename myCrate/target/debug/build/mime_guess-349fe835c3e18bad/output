@@ -1,0 +1,1 @@
+cargo:rustc-env=MIME_TYPES_GENERATED_PATH=/Users/brandonwalton/Documents/Developer/Testing/swift_rust_interop/myCrate/target/debug/build/mime_guess-349fe835c3e18bad/out/mime_types_generated.rs

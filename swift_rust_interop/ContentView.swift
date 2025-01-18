@@ -8,15 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    // `Person` Declared in rust package
+    let people = [Person(name: "John", age: 28)]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List {
+            ForEach(people) { person in
+                HStack {
+                    Text(person.name)
+                    Spacer()
+                    Text(person.age, format: .number)
+                }
+            }
         }
-        .padding()
     }
+}
+
+extension Person: Identifiable {
+    
+    public var id: String { name }
 }
 
 #Preview {

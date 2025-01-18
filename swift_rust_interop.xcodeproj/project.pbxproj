@@ -6,8 +6,30 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		803F38452D3BF64F00BC10CA /* my_crate_framework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803F38442D3BF64F00BC10CA /* my_crate_framework.xcframework */; };
+		803F38462D3BF64F00BC10CA /* my_crate_framework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 803F38442D3BF64F00BC10CA /* my_crate_framework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		803F384B2D3BF6ED00BC10CA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 803F384A2D3BF6ED00BC10CA /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		803F38472D3BF64F00BC10CA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				803F38462D3BF64F00BC10CA /* my_crate_framework.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		803F38322D3BF5A200BC10CA /* swift_rust_interop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swift_rust_interop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		803F38442D3BF64F00BC10CA /* my_crate_framework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = my_crate_framework.xcframework; path = frameworks/my_crate_framework.xcframework; sourceTree = "<group>"; };
+		803F384A2D3BF6ED00BC10CA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				803F38452D3BF64F00BC10CA /* my_crate_framework.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +55,9 @@
 		803F38292D3BF5A200BC10CA = {
 			isa = PBXGroup;
 			children = (
+				803F384A2D3BF6ED00BC10CA /* README.md */,
 				803F38342D3BF5A200BC10CA /* swift_rust_interop */,
+				803F38432D3BF64F00BC10CA /* Frameworks */,
 				803F38332D3BF5A200BC10CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +70,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		803F38432D3BF64F00BC10CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				803F38442D3BF64F00BC10CA /* my_crate_framework.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -55,6 +88,7 @@
 				803F382E2D3BF5A200BC10CA /* Sources */,
 				803F382F2D3BF5A200BC10CA /* Frameworks */,
 				803F38302D3BF5A200BC10CA /* Resources */,
+				803F38472D3BF64F00BC10CA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -109,6 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				803F384B2D3BF6ED00BC10CA /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
