@@ -20,6 +20,10 @@ struct ContentView: View {
     @State var swift_endTime: Date?
     @State var swift_fib: Float64?
     
+    @State var grammer = ""
+    @State private var suggestions: [String] = []
+    @State private var correction: String?
+    
     let n_th: Float64 = 10000000
     
     var body: some View {
@@ -41,6 +45,24 @@ struct ContentView: View {
                     Text(rust_startTime.timeIntervalSince1970, format: .number)
                     Text(rust_endTime.timeIntervalSince1970, format: .number)
                     Text(rust_endTime.timeIntervalSince1970 - rust_startTime.timeIntervalSince1970, format: .number)
+                }
+            }
+            Section("Grammer") {
+                TextField("Correct This", text: $grammer)
+                    .onSubmit {
+                        correction = nil
+                        suggestions = generateSuggestion(input: grammer)
+                        correction = generateCorrection(input: grammer)
+                        print(correction ?? "")
+                        print(suggestions)
+                    }
+                if !suggestions.isEmpty {
+                    Text(correction ?? "No correction available")
+                    ForEach(suggestions, id: \.self) { suggestion in
+                        Text(suggestion)
+                    }
+                } else {
+                    Text("No Notes")
                 }
             }
             Section {

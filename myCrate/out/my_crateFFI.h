@@ -67,6 +67,10 @@ uint32_t uniffi_my_crate_fn_func_add(uint32_t a, uint32_t b, RustCallStatus *_No
 );
 double uniffi_my_crate_fn_func_fibonacci(double n, RustCallStatus *_Nonnull out_status
 );
+RustBuffer uniffi_my_crate_fn_func_generate_correction(RustBuffer input, RustCallStatus *_Nonnull out_status
+);
+RustBuffer uniffi_my_crate_fn_func_generate_suggestion(RustBuffer input, RustCallStatus *_Nonnull out_status
+);
 RustBuffer ffi_my_crate_rustbuffer_alloc(int32_t size, RustCallStatus *_Nonnull out_status
 );
 RustBuffer ffi_my_crate_rustbuffer_from_bytes(ForeignBytes bytes, RustCallStatus *_Nonnull out_status
@@ -185,6 +189,12 @@ uint16_t uniffi_my_crate_checksum_func_add(void
     
 );
 uint16_t uniffi_my_crate_checksum_func_fibonacci(void
+    
+);
+uint16_t uniffi_my_crate_checksum_func_generate_correction(void
+    
+);
+uint16_t uniffi_my_crate_checksum_func_generate_suggestion(void
     
 );
 uint32_t ffi_my_crate_uniffi_contract_version(void

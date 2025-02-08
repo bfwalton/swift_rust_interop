@@ -7,11 +7,16 @@ edition = "2021"
 crate-type = ["cdylib", "staticlib"]
 name = "my_crate"
 
+target = ["aarch64-apple-ios-sim","aarch64-apple-darwin", "aarch64-apple-ios"]
+
 [dependencies]
 uniffi = { version = "0.25.3", features = [ "cli" ] }
+nlprule = "0.6.4"
+onig = { version = "6", default-features = false }
 
 [build-dependencies]
 uniffi = { version = "0.25.3", features = [ "build" ] }
+nlprule-build = "0.6.4"
 
 [[bin]]
 name = "uniffi-bindgen"

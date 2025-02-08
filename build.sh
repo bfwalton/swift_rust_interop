@@ -16,34 +16,45 @@ RELDIR="release"
 STATIC_LIB_NAME="lib${NAME}.a"
 NEW_HEADER_DIR="out/include"
 
-# Build and generate bindings for aarch64-apple-ios
-cargo build --target aarch64-apple-ios --release
-cargo run --bin uniffi-bindgen generate --library target/aarch64-apple-ios/release/lib${NAME}.a --language swift --out-dir out
+export RUSTONIG_DYNAMIC_LIBONIG=1
+export RUST_BACKTRACE=1
+export CARGO_FEATURE_NO_NEON=1
+export IPHONEOS_DEPLOYMENT_TARGET="12.0"
+export SDKROOT=''
+my_targets=("aarch64-apple-ios-sim" "aarch64-apple-darwin" "aarch64-apple-ios")
+printf "Generating for Targets: \n"
+printf "* %s\n" "${my_targets[@]}"
 
-# Build and generate bindings for aarch64-apple-darwin (In theory apple silicon simulator?)
-cargo build --target aarch64-apple-darwin --release
-cargo run --bin uniffi-bindgen generate --library target/aarch64-apple-darwin/release/lib${NAME}.a --language swift --out-dir out
+for target in "${my_targets[@]}"
+do
+    printf "Generating for target: %s\n" "${target}"
 
-# Build and generate bindings for aarch64-apple-ios-sim (In theory apple silicon simulator?)
-cargo build --target aarch64-apple-ios-sim --release
-cargo run --bin uniffi-bindgen generate --library target/aarch64-apple-ios-sim/release/lib${NAME}.a --language swift --out-dir out
+    printf "Building for target: %s\n" "${target}"
+    cargo build --target "${target}" --release
+
+    printf "Genereating bindings for target: %s\n" "${target}"
+    cargo run --bin uniffi-bindgen generate --library "target/${target}/release/libmy_crate.a" --language swift --out-dir out
+done
 
 # Copy Module Map
+printf "Copying Module Map\n"
+
 mkdir -p "${NEW_HEADER_DIR}"
 cp "${HEADERPATH}" "${NEW_HEADER_DIR}/"
 cp "out/${NAME}FFI.modulemap" "${NEW_HEADER_DIR}/module.modulemap"
 
-#Remove Framework if one is already created
+printf "Clearing Old Framework\n"
+
+# Remove Framework if one is already created
 rm -rf "${OUTDIR}/${NAME}_framework.xcframework"
 
-# Generate framework for both targets
+# Generate framework for all targets
+printf "Generating Framework\n"
+
 xcodebuild -create-xcframework \
-    -library "${TARGETDIR}/aarch64-apple-ios/${RELDIR}/${STATIC_LIB_NAME}" \
-    -headers "${NEW_HEADER_DIR}" \
-    -library "${TARGETDIR}/aarch64-apple-darwin/${RELDIR}/${STATIC_LIB_NAME}" \
-    -headers "${NEW_HEADER_DIR}" \
-    -library "${TARGETDIR}/aarch64-apple-ios-sim/${RELDIR}/${STATIC_LIB_NAME}" \
-    -headers "${NEW_HEADER_DIR}" \
+    $(for target in "${my_targets[@]}"; do
+        echo -library "${TARGETDIR}/${target}/${RELDIR}/${STATIC_LIB_NAME}" -headers "${NEW_HEADER_DIR}"
+    done) \
     -output "${OUTDIR}/${NAME}_framework.xcframework"
 
 # Clear header dir

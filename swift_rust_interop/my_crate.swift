@@ -488,6 +488,28 @@ extension Fruits: Equatable, Hashable {}
 
 
 
+fileprivate struct FfiConverterSequenceString: FfiConverterRustBuffer {
+    typealias SwiftType = [String]
+
+    public static func write(_ value: [String], into buf: inout [UInt8]) {
+        let len = Int32(value.count)
+        writeInt(&buf, len)
+        for item in value {
+            FfiConverterString.write(item, into: &buf)
+        }
+    }
+
+    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> [String] {
+        let len: Int32 = try readInt(&buf)
+        var seq = [String]()
+        seq.reserveCapacity(Int(len))
+        for _ in 0 ..< len {
+            seq.append(try FfiConverterString.read(from: &buf))
+        }
+        return seq
+    }
+}
+
 public func add(a: UInt32, b: UInt32)  -> UInt32 {
     return try!  FfiConverterUInt32.lift(
         try! rustCall() {
@@ -503,6 +525,24 @@ public func fibonacci(n: Double)  -> Double {
         try! rustCall() {
     uniffi_my_crate_fn_func_fibonacci(
         FfiConverterDouble.lower(n),$0)
+}
+    )
+}
+
+public func generateCorrection(input: String)  -> String {
+    return try!  FfiConverterString.lift(
+        try! rustCall() {
+    uniffi_my_crate_fn_func_generate_correction(
+        FfiConverterString.lower(input),$0)
+}
+    )
+}
+
+public func generateSuggestion(input: String)  -> [String] {
+    return try!  FfiConverterSequenceString.lift(
+        try! rustCall() {
+    uniffi_my_crate_fn_func_generate_suggestion(
+        FfiConverterString.lower(input),$0)
 }
     )
 }
@@ -526,6 +566,12 @@ private var initializationResult: InitializationResult {
         return InitializationResult.apiChecksumMismatch
     }
     if (uniffi_my_crate_checksum_func_fibonacci() != 42061) {
+        return InitializationResult.apiChecksumMismatch
+    }
+    if (uniffi_my_crate_checksum_func_generate_correction() != 61778) {
+        return InitializationResult.apiChecksumMismatch
+    }
+    if (uniffi_my_crate_checksum_func_generate_suggestion() != 30227) {
         return InitializationResult.apiChecksumMismatch
     }
 
